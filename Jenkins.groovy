@@ -2,21 +2,21 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_IMAGE = 'gowthamhegde40/frontend:latest'
-        BACKEND_IMAGE = 'gowthamhegde40/backend:latest'
-        VM1_IP = 'your-vm1-private-ip'
+        FRONTEND_IMAGE = 'gowthamhegde04/frontend:latest'
+        BACKEND_IMAGE = 'gowthamhegde04/backend:latest'
+        VM1_IP = '10.0.9.33'
     }
 
     stages {
 
-        stage('Pull Code from Git') {
+        stage('Pull Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/your-username/crud-dd-task-mean-app.git'
+                    url: 'https://github.com/Gowthamhegde/crud-dd-task-mean-app.git'
             }
         }
 
-        stage('Build Docker Images') {
+        stage('Build Images') {
             steps {
                 sh 'docker build -t ${FRONTEND_IMAGE} ./frontend'
                 sh 'docker build -t ${BACKEND_IMAGE} ./backend'
